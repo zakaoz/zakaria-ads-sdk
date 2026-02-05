@@ -166,7 +166,6 @@ public class NativeAdFragment {
         }
 
         public Builder setLegacyGDPR(boolean legacyGDPR) {
-            this.legacyGDPR = legacyGDPR;
             return this;
         }
 

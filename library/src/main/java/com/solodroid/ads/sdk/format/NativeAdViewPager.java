@@ -157,7 +157,6 @@ public class NativeAdViewPager {
         }
 
         public Builder setLegacyGDPR(boolean legacyGDPR) {
-            this.legacyGDPR = legacyGDPR;
             return this;
         }
 

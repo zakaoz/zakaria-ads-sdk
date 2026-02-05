@@ -156,7 +156,6 @@ public class BannerAd {
         }
 
         public Builder setLegacyGDPR(boolean legacyGDPR) {
-            this.legacyGDPR = legacyGDPR;
             return this;
         }
 

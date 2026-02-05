@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.facebook.ads.AdSettings;
 import com.facebook.ads.AudienceNetworkAds;
-import com.solodroid.ads.sdk.BuildConfig;
+
 
 public class AudienceNetworkInitializeHelper implements AudienceNetworkAds.InitListener {
 
@@ -18,11 +18,6 @@ public class AudienceNetworkInitializeHelper implements AudienceNetworkAds.InitL
      */
     public static void initialize(Context context) {
         if (!AudienceNetworkAds.isInitialized(context)) {
-            if (BuildConfig.DEBUG) {
-                AdSettings.turnOnSDKDebugger(context);
-                AdSettings.setTestMode(true);
-                AdSettings.setIntegrationErrorMode(AdSettings.IntegrationErrorMode.INTEGRATION_ERROR_CRASH_DEBUG_MODE);
-            }
 
             AudienceNetworkAds
                     .buildInitSettings(context)

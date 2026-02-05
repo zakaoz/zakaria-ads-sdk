@@ -166,7 +166,6 @@ public class InterstitialAd {
         }
 
         public Builder setLegacyGDPR(boolean legacyGDPR) {
-            this.legacyGDPR = legacyGDPR;
             return this;
         }
 
