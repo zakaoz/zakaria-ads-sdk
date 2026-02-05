@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    compileSdk 35
     defaultConfig {
         applicationId "com.solodroid.ads.sdkdemo"
         minSdk 21
-        targetSdk 33
+        targetSdk 35
         versionCode 1
         versionName "1.0.0"
         multiDexEnabled true
@@ -23,9 +23,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    lintOptions {
+    lint {
         disable 'GradleDependency'
     }
+    namespace 'com.solodroid.ads.sdkdemo'
 }
 
 dependencies {
