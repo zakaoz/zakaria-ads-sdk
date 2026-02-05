@@ -64,10 +64,23 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                from components.release
                 groupId = 'com.github.zakaoz'
                 artifactId = 'zakaria-ads-sdk'
-                version = '2.0.0'
+                version = '2.0.2'
+                
+                artifact(bundleReleaseAar)
+                
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    configurations.implementation.allDependencies.each { dep ->
+                        if (dep.group != null && dep.name != null && dep.version != null) {
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', dep.group)
+                            dependencyNode.appendNode('artifactId', dep.name)
+                            dependencyNode.appendNode('version', dep.version)
+                        }
+                    }
+                }
             }
         }
     }
