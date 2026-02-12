@@ -43,9 +43,9 @@ import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.admanager.AdManagerInterstitialAd;
 import com.google.android.gms.ads.admanager.AdManagerInterstitialAdLoadCallback;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
-import com.ironsource.mediationsdk.IronSource;
+import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo;
 import com.ironsource.mediationsdk.logger.IronSourceError;
-import com.ironsource.mediationsdk.sdk.InterstitialListener;
+import com.ironsource.mediationsdk.sdk.LevelPlayInterstitialListener;
 import com.solodroid.ads.sdk.helper.AppLovinCustomEventInterstitial;
 import com.solodroid.ads.sdk.util.Tools;
 import com.startapp.sdk.adsbase.Ad;
@@ -397,43 +397,43 @@ public class InterstitialAd {
 
                     case IRONSOURCE:
                     case FAN_BIDDING_IRONSOURCE:
-                        IronSource.setInterstitialListener(new InterstitialListener() {
+                        IronSource.setLevelPlayInterstitialListener(new LevelPlayInterstitialListener() {
                             @Override
-                            public void onInterstitialAdReady() {
+                            public void onAdReady(AdInfo adInfo) {
                                 Log.d(TAG, "onInterstitialAdReady");
                             }
 
                             @Override
-                            public void onInterstitialAdLoadFailed(IronSourceError ironSourceError) {
+                            public void onAdLoadFailed(IronSourceError ironSourceError) {
                                 Log.d(TAG, "onInterstitialAdLoadFailed" + " " + ironSourceError);
                                 loadBackupInterstitialAd();
                             }
 
                             @Override
-                            public void onInterstitialAdOpened() {
+                            public void onAdOpened(AdInfo adInfo) {
                                 Log.d(TAG, "onInterstitialAdOpened");
                             }
 
                             @Override
-                            public void onInterstitialAdClosed() {
-                                Log.d(TAG, "onInterstitialAdClosed");
-                                loadInterstitialAd();
-                            }
-
-                            @Override
-                            public void onInterstitialAdShowSucceeded() {
+                            public void onAdShowSucceeded(AdInfo adInfo) {
                                 Log.d(TAG, "onInterstitialAdShowSucceeded");
                             }
 
                             @Override
-                            public void onInterstitialAdShowFailed(IronSourceError ironSourceError) {
+                            public void onAdShowFailed(IronSourceError ironSourceError, AdInfo adInfo) {
                                 Log.d(TAG, "onInterstitialAdShowFailed" + " " + ironSourceError);
                                 loadBackupInterstitialAd();
                             }
 
                             @Override
-                            public void onInterstitialAdClicked() {
+                            public void onAdClicked(AdInfo adInfo) {
                                 Log.d(TAG, "onInterstitialAdClicked");
+                            }
+
+                            @Override
+                            public void onAdClosed(AdInfo adInfo) {
+                                Log.d(TAG, "onInterstitialAdClosed");
+                                loadInterstitialAd();
                             }
                         });
                         IronSource.loadInterstitial();
@@ -665,41 +665,41 @@ public class InterstitialAd {
 
                     case IRONSOURCE:
                     case FAN_BIDDING_IRONSOURCE:
-                        IronSource.setInterstitialListener(new InterstitialListener() {
+                        IronSource.setLevelPlayInterstitialListener(new LevelPlayInterstitialListener() {
                             @Override
-                            public void onInterstitialAdReady() {
+                            public void onAdReady(AdInfo adInfo) {
                                 Log.d(TAG, "onInterstitialAdReady");
                             }
 
                             @Override
-                            public void onInterstitialAdLoadFailed(IronSourceError ironSourceError) {
+                            public void onAdLoadFailed(IronSourceError ironSourceError) {
                                 Log.d(TAG, "onInterstitialAdLoadFailed" + " " + ironSourceError);
                             }
 
                             @Override
-                            public void onInterstitialAdOpened() {
+                            public void onAdOpened(AdInfo adInfo) {
                                 Log.d(TAG, "onInterstitialAdOpened");
                             }
 
                             @Override
-                            public void onInterstitialAdClosed() {
-                                Log.d(TAG, "onInterstitialAdClosed");
-                                loadInterstitialAd();
-                            }
-
-                            @Override
-                            public void onInterstitialAdShowSucceeded() {
+                            public void onAdShowSucceeded(AdInfo adInfo) {
                                 Log.d(TAG, "onInterstitialAdShowSucceeded");
                             }
 
                             @Override
-                            public void onInterstitialAdShowFailed(IronSourceError ironSourceError) {
+                            public void onAdShowFailed(IronSourceError ironSourceError, AdInfo adInfo) {
                                 Log.d(TAG, "onInterstitialAdShowFailed" + " " + ironSourceError);
                             }
 
                             @Override
-                            public void onInterstitialAdClicked() {
+                            public void onAdClicked(AdInfo adInfo) {
                                 Log.d(TAG, "onInterstitialAdClicked");
+                            }
+
+                            @Override
+                            public void onAdClosed(AdInfo adInfo) {
+                                Log.d(TAG, "onInterstitialAdClosed");
+                                loadInterstitialAd();
                             }
                         });
                         IronSource.loadInterstitial();

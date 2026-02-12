@@ -56,16 +56,19 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
 
     //AdMob mediation - Updated versions
-    implementation 'com.google.ads.mediation:applovin:13.1.0.0'
     implementation 'com.google.ads.mediation:facebook:6.19.0.0'
     implementation 'com.google.ads.mediation:unity:4.13.1.0'
     implementation 'com.google.ads.mediation:ironsource:8.6.1.0'
 
-    //AppLovin mediation - Updated versions
-    implementation 'com.applovin.mediation:google-adapter:23.6.0.0'
-    implementation 'com.applovin.mediation:facebook-adapter:6.19.0.0'
-    implementation 'com.applovin.mediation:unityads-adapter:4.13.1.0'
+    //AppLovin
+    implementation 'com.applovin:applovin-sdk:13.5.1'
+    implementation 'com.applovin.mediation:google-adapter:24.9.0.0'
+    implementation 'com.applovin.mediation:facebook-adapter:6.21.0.0'
+    implementation 'com.applovin.mediation:unity-adapter:5.2.0.0'
+    implementation 'com.applovin.mediation:ironsource-adapter:9.0.0.0.0'
 
+    //Mediation
+    implementation 'com.google.ads.mediation:applovin:13.5.1.0'
 
     //GDPR - Updated
     implementation 'com.google.android.ump:user-messaging-platform:2.2.0'
