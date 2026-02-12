@@ -46,9 +46,8 @@ import com.google.android.gms.ads.admanager.AdManagerAdView;
 import com.ironsource.mediationsdk.ISBannerSize;
 import com.ironsource.mediationsdk.IronSource;
 import com.ironsource.mediationsdk.IronSourceBannerLayout;
-import com.ironsource.mediationsdk.adunit.adapter.utility.AdInfo;
 import com.ironsource.mediationsdk.logger.IronSourceError;
-import com.ironsource.mediationsdk.sdk.LevelPlayBannerListener;
+import com.ironsource.mediationsdk.sdk.BannerListener;
 import com.solodroid.ads.sdk.R;
 import com.solodroid.ads.sdk.helper.AppLovinCustomEventBanner;
 import com.solodroid.ads.sdk.util.Tools;
@@ -445,36 +444,36 @@ public class MediumRectangleAd {
                         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
                         ironSourceBannerView.addView(ironSourceBannerLayout, 0, layoutParams);
                         if (ironSourceBannerLayout != null) {
-                            ironSourceBannerLayout.setLevelPlayBannerListener(new LevelPlayBannerListener() {
+                            ironSourceBannerLayout.setBannerListener(new BannerListener() {
                                 @Override
-                                public void onAdLoaded(AdInfo adInfo) {
+                                public void onBannerAdLoaded() {
                                     Log.d(TAG, "onBannerAdLoaded");
                                     ironSourceBannerView.setVisibility(View.VISIBLE);
                                 }
 
                                 @Override
-                                public void onAdLoadFailed(IronSourceError error) {
+                                public void onBannerAdLoadFailed(IronSourceError error) {
                                     Log.d(TAG, "onBannerAdLoadFailed" + " " + error);
                                     loadBackupBannerAd();
                                 }
 
                                 @Override
-                                public void onAdClicked(AdInfo adInfo) {
+                                public void onBannerAdClicked() {
                                     Log.d(TAG, "onBannerAdClicked");
                                 }
 
                                 @Override
-                                public void onAdScreenPresented(AdInfo adInfo) {
+                                public void onBannerAdScreenPresented() {
                                     Log.d(TAG, "onBannerAdScreenPresented");
                                 }
 
                                 @Override
-                                public void onAdScreenDismissed(AdInfo adInfo) {
+                                public void onBannerAdScreenDismissed() {
                                     Log.d(TAG, "onBannerAdScreenDismissed");
                                 }
 
                                 @Override
-                                public void onAdLeftApplication(AdInfo adInfo) {
+                                public void onBannerAdLeftApplication() {
                                     Log.d(TAG, "onBannerAdLeftApplication");
                                 }
                             });
@@ -771,35 +770,35 @@ public class MediumRectangleAd {
                         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
                         ironSourceBannerView.addView(ironSourceBannerLayout, 0, layoutParams);
                         if (ironSourceBannerLayout != null) {
-                            ironSourceBannerLayout.setLevelPlayBannerListener(new LevelPlayBannerListener() {
+                            ironSourceBannerLayout.setBannerListener(new BannerListener() {
                                 @Override
-                                public void onAdLoaded(AdInfo adInfo) {
+                                public void onBannerAdLoaded() {
                                     Log.d(TAG, "onBannerAdLoaded");
                                     ironSourceBannerView.setVisibility(View.VISIBLE);
                                 }
 
                                 @Override
-                                public void onAdLoadFailed(IronSourceError error) {
+                                public void onBannerAdLoadFailed(IronSourceError error) {
                                     Log.d(TAG, "onBannerAdLoadFailed" + " " + error);
                                 }
 
                                 @Override
-                                public void onAdClicked(AdInfo adInfo) {
+                                public void onBannerAdClicked() {
                                     Log.d(TAG, "onBannerAdClicked");
                                 }
 
                                 @Override
-                                public void onAdScreenPresented(AdInfo adInfo) {
+                                public void onBannerAdScreenPresented() {
                                     Log.d(TAG, "onBannerAdScreenPresented");
                                 }
 
                                 @Override
-                                public void onAdScreenDismissed(AdInfo adInfo) {
+                                public void onBannerAdScreenDismissed() {
                                     Log.d(TAG, "onBannerAdScreenDismissed");
                                 }
 
                                 @Override
-                                public void onAdLeftApplication(AdInfo adInfo) {
+                                public void onBannerAdLeftApplication() {
                                     Log.d(TAG, "onBannerAdLeftApplication");
                                 }
                             });
