@@ -51,21 +51,21 @@ dependencies {
     implementation 'com.unity3d.ads:unity-ads:4.13.1'
     implementation 'com.facebook.android:audience-network-sdk:6.19.0'
 
-    //IronSource
-    implementation 'com.ironsource.sdk:mediationsdk:7.6.1'
+    //IronSource removed
+    //implementation 'com.ironsource.sdk:mediationsdk:7.6.1'
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
 
     //AdMob mediation - Updated versions
     implementation 'com.google.ads.mediation:facebook:6.19.0.0'
     implementation 'com.google.ads.mediation:unity:4.13.1.0'
-    implementation 'com.google.ads.mediation:ironsource:8.6.1.0'
+    //implementation 'com.google.ads.mediation:ironsource:8.6.1.0'
 
     //AppLovin
     implementation 'com.applovin:applovin-sdk:12.6.1'
     implementation 'com.applovin.mediation:google-adapter:23.3.0.0'
     implementation 'com.applovin.mediation:facebook-adapter:6.19.0.2'
     implementation 'com.applovin.mediation:unityads-adapter:4.14.0.0'
-    implementation 'com.applovin.mediation:ironsource-adapter:8.2.1.0.0'
+    //implementation 'com.applovin.mediation:ironsource-adapter:8.2.1.0.0'
 
     //Mediation
     implementation 'com.google.ads.mediation:applovin:12.6.1.0'
