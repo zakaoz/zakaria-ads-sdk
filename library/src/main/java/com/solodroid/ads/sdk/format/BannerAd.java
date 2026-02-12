@@ -43,7 +43,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.admanager.AdManagerAdView;
-import com.ironsource.mediationsdk.ISBannerSize;
+//import com.ironsource.mediationsdk.ISBannerSize;
 //import com.ironsource.mediationsdk.IronSource;
 //import com.ironsource.mediationsdk.IronSourceBannerLayout;
 //import com.ironsource.mediationsdk.logger.IronSourceError;
@@ -64,8 +64,8 @@ public class BannerAd {
         private AdManagerAdView adManagerAdView;
         private com.facebook.ads.AdView fanAdView;
         private AppLovinAdView appLovinAdView;
-        FrameLayout ironSourceBannerView;
-        private IronSourceBannerLayout ironSourceBannerLayout;
+//        FrameLayout ironSourceBannerView;
+//        private IronSourceBannerLayout ironSourceBannerLayout;
 
         private String adStatus = "";
         private String adNetwork = "";
@@ -77,7 +77,7 @@ public class BannerAd {
         private String appLovinBannerId = "";
         private String appLovinBannerZoneId = "";
         private String mopubBannerId = "";
-        private String ironSourceBannerId = "";
+//        private String ironSourceBannerId = "";
         private int placementStatus = 1;
         private boolean darkTheme = false;
         private boolean legacyGDPR = false;
@@ -141,10 +141,12 @@ public class BannerAd {
             return this;
         }
 
+/*
         public Builder setIronSourceBannerId(String ironSourceBannerId) {
             this.ironSourceBannerId = ironSourceBannerId;
             return this;
         }
+*/
 
         public Builder setPlacementStatus(int placementStatus) {
             this.placementStatus = placementStatus;
@@ -674,7 +676,7 @@ public class BannerAd {
                         });
 
                         int width = ViewGroup.LayoutParams.MATCH_PARENT;
-                        int heightPx = activity.getResources().getDimensionPixelSize(R.d.applovin_banner_height);
+                        int heightPx = activity.getResources().getDimensionPixelSize(R.dimen.applovin_banner_height);
                         maxAdView.setLayoutParams(new FrameLayout.LayoutParams(width, heightPx));
                         if (darkTheme) {
                             maxAdView.setBackgroundColor(activity.getResources().getColor(R.color.colorBackgroundDark));
@@ -721,6 +723,7 @@ public class BannerAd {
             }
         }
 
+/*
         public void destroyAndDetachBanner() {
             if (adStatus.equals(AD_STATUS_ON) && placementStatus != 0) {
                 if (adNetwork.equals(IRONSOURCE) || backupAdNetwork.equals(IRONSOURCE)) {
@@ -734,6 +737,7 @@ public class BannerAd {
                 }
             }
         }
+*/
 
     }
 

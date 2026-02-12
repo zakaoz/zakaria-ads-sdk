@@ -45,7 +45,7 @@ public class AdNetwork {
         private String startappAppId = "0";
         private String unityGameId = "";
         private String mopubBannerId = "";
-        //private String ironSourceAppKey = "";
+//        private String ironSourceAppKey = "";
         private boolean debug = true;
 
         public Initialize(Activity activity) {
@@ -98,12 +98,12 @@ public class AdNetwork {
             return this;
         }
 
-        /*
+/*
         public Initialize setIronSourceAppKey(String ironSourceAppKey) {
             this.ironSourceAppKey = ironSourceAppKey;
             return this;
         }
-        */
+*/
 
         public Initialize setDebug(boolean debug) {
             this.debug = debug;
@@ -169,7 +169,8 @@ public class AdNetwork {
                         break;
 
                     case APPLOVIN_DISCOVERY:
-                        AppLovinSdk.initializeSdk(activity);
+                        AppLovinSdk.getInstance(activity).initializeSdk(config -> {
+                        });
                         break;
 
                     case MOPUB:
@@ -238,7 +239,8 @@ public class AdNetwork {
                         break;
 
                     case APPLOVIN_DISCOVERY:
-                        AppLovinSdk.initializeSdk(activity);
+                        AppLovinSdk.getInstance(activity).initializeSdk(config -> {
+                        });
                         break;
 
                     case MOPUB:
