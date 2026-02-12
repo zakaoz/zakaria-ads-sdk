@@ -64,8 +64,8 @@ dependencies {
     implementation 'com.applovin:applovin-sdk:13.5.1'
     implementation 'com.applovin.mediation:google-adapter:24.9.0.0'
     implementation 'com.applovin.mediation:facebook-adapter:6.21.0.0'
-    implementation 'com.applovin.mediation:unity-adapter:5.2.0.0'
-    implementation 'com.applovin.mediation:ironsource-adapter:9.0.0.0.0'
+    implementation 'com.applovin.mediation:unityads-adapter:4.16.5.0'
+    implementation 'com.applovin.mediation:ironsource-adapter:9.3.0.0.0'
 
     //Mediation
     implementation 'com.google.ads.mediation:applovin:13.5.1.0'
