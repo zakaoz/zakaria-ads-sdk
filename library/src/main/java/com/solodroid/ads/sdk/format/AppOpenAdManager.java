@@ -48,7 +48,7 @@ public class AppOpenAdManager {
 
         isLoadingAd = true;
         AdManagerAdRequest request = new AdManagerAdRequest.Builder().build();
-        AppOpenAd.load(context, adManagerAppOpenAdUnitId, request, AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, new AppOpenAd.AppOpenAdLoadCallback() {
+        AppOpenAd.load(context, adManagerAppOpenAdUnitId, request, new AppOpenAd.AppOpenAdLoadCallback() {
                     /**
                      * Called when an app open ad has loaded.
                      *
