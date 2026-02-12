@@ -10,6 +10,7 @@ import static com.solodroid.ads.sdk.util.Constant.FAN_BIDDING_ADMOB;
 import static com.solodroid.ads.sdk.util.Constant.FAN_BIDDING_AD_MANAGER;
 import static com.solodroid.ads.sdk.util.Constant.FAN_BIDDING_APPLOVIN_MAX;
 import static com.solodroid.ads.sdk.util.Constant.GOOGLE_AD_MANAGER;
+import static com.solodroid.ads.sdk.util.Constant.MOPUB;
 import static com.solodroid.ads.sdk.util.Constant.NONE;
 import static com.solodroid.ads.sdk.util.Constant.STARTAPP;
 import static com.solodroid.ads.sdk.util.Constant.UNITY;
@@ -22,6 +23,8 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.applovin.sdk.AppLovinMediationProvider;
 import com.applovin.sdk.AppLovinSdk;
+import com.applovin.sdk.AppLovinSdkConfiguration;
+import com.applovin.sdk.AppLovinSdkInitializationConfiguration;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.AdapterStatus;
 //import com.ironsource.mediationsdk.IronSource;
@@ -45,6 +48,7 @@ public class AdNetwork {
         private String startappAppId = "0";
         private String unityGameId = "";
         private String mopubBannerId = "";
+        private String appLovinSdkKey = "";
 //        private String ironSourceAppKey = "";
         private boolean debug = true;
 
@@ -144,32 +148,32 @@ public class AdNetwork {
                                     .setPositiveButton("DISMISS", null)
                                     .show();
                         }
-//                        InitializationConfiguration configuration = InitializationConfiguration.builder()
-//                                .setGameId(unityGameId)
-//                                .setInitializationListener(new IInitializationListener() {
-//                                    @Override
-//                                    public void onInitializationComplete() {
-//                                        Log.d(TAG, "Unity Mediation is successfully initialized. with ID : " + unityGameId);
-//                                    }
-//
-//                                    @Override
-//                                    public void onInitializationFailed(SdkInitializationError errorCode, String msg) {
-//                                        Log.d(TAG, "Unity Mediation Failed to Initialize : " + msg);
-//                                    }
-//                                }).build();
-//                        UnityMediation.initialize(configuration);
                         break;
                     case APPLOVIN:
                     case APPLOVIN_MAX:
                     case FAN_BIDDING_APPLOVIN_MAX:
-                        AppLovinSdk.getInstance(activity).setMediationProvider(AppLovinMediationProvider.MAX);
-                        AppLovinSdk.getInstance(activity).initializeSdk(config -> {
+                        AppLovinSdkInitializationConfiguration initConfig =
+                                AppLovinSdkInitializationConfiguration.builder(appLovinSdkKey, activity)
+                                        .setMediationProvider(AppLovinMediationProvider.MAX)
+                                        .build();
+                        AppLovinSdk.getInstance(activity).initialize(initConfig, new AppLovinSdk.SdkInitializationListener() {
+                            @Override
+                            public void onSdkInitialized(final AppLovinSdkConfiguration sdkConfig) {
+                                Log.d(TAG, "AppLovin MAX SDK initialized");
+                            }
                         });
                         AudienceNetworkInitializeHelper.initialize(activity);
                         break;
 
                     case APPLOVIN_DISCOVERY:
-                        AppLovinSdk.getInstance(activity).initializeSdk(config -> {
+                        AppLovinSdkInitializationConfiguration discoveryConfig =
+                                AppLovinSdkInitializationConfiguration.builder(appLovinSdkKey, activity)
+                                        .build();
+                        AppLovinSdk.getInstance(activity).initialize(discoveryConfig, new AppLovinSdk.SdkInitializationListener() {
+                            @Override
+                            public void onSdkInitialized(final AppLovinSdkConfiguration sdkConfig) {
+                                Log.d(TAG, "AppLovin Discovery SDK initialized");
+                            }
                         });
                         break;
 
@@ -214,32 +218,32 @@ public class AdNetwork {
                         StartAppSDK.setUserConsent(activity, "pas", System.currentTimeMillis(), true);
                         break;
                     case UNITY:
-//                        InitializationConfiguration configuration = InitializationConfiguration.builder()
-//                                .setGameId(unityGameId)
-//                                .setInitializationListener(new IInitializationListener() {
-//                                    @Override
-//                                    public void onInitializationComplete() {
-//                                        Log.d(TAG, "Unity Mediation is successfully initialized. with ID : " + unityGameId);
-//                                    }
-//
-//                                    @Override
-//                                    public void onInitializationFailed(SdkInitializationError errorCode, String msg) {
-//                                        Log.d(TAG, "Unity Mediation Failed to Initialize : " + msg);
-//                                    }
-//                                }).build();
-//                        UnityMediation.initialize(configuration);
                         break;
                     case APPLOVIN:
                     case APPLOVIN_MAX:
                     case FAN_BIDDING_APPLOVIN_MAX:
-                        AppLovinSdk.getInstance(activity).setMediationProvider(AppLovinMediationProvider.MAX);
-                        AppLovinSdk.getInstance(activity).initializeSdk(config -> {
+                        AppLovinSdkInitializationConfiguration backupInitConfig =
+                                AppLovinSdkInitializationConfiguration.builder(appLovinSdkKey, activity)
+                                        .setMediationProvider(AppLovinMediationProvider.MAX)
+                                        .build();
+                        AppLovinSdk.getInstance(activity).initialize(backupInitConfig, new AppLovinSdk.SdkInitializationListener() {
+                            @Override
+                            public void onSdkInitialized(final AppLovinSdkConfiguration sdkConfig) {
+                                Log.d(TAG, "AppLovin MAX SDK initialized (backup)");
+                            }
                         });
                         AudienceNetworkInitializeHelper.initialize(activity);
                         break;
 
                     case APPLOVIN_DISCOVERY:
-                        AppLovinSdk.getInstance(activity).initializeSdk(config -> {
+                        AppLovinSdkInitializationConfiguration backupDiscoveryConfig =
+                                AppLovinSdkInitializationConfiguration.builder(appLovinSdkKey, activity)
+                                        .build();
+                        AppLovinSdk.getInstance(activity).initialize(backupDiscoveryConfig, new AppLovinSdk.SdkInitializationListener() {
+                            @Override
+                            public void onSdkInitialized(final AppLovinSdkConfiguration sdkConfig) {
+                                Log.d(TAG, "AppLovin Discovery SDK initialized (backup)");
+                            }
                         });
                         break;
 
